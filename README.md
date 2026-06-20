@@ -24,14 +24,13 @@ npm run build
 npm run preview
 ```
 
-## Deploy to GitHub Pages
+### Deploy to GitHub Pages
 
-1. Create a repo named `omar-portfolio` on GitHub
-2. Push this project to the `main` branch
-3. Go to **Settings → Pages → Build and deployment → Source: GitHub Actions**
-4. Push to `main` — the workflow deploys automatically
-
-### Custom domain or different repo name
+1. Push to `main` — GitHub Actions builds the site and pushes to the `gh-pages` branch
+2. Go to **Settings → Pages → Build and deployment**
+3. **Source:** Deploy from a branch
+4. **Branch:** `gh-pages` → `/ (root)` → **Save**
+5. Wait 1–2 minutes, then open: `https://omarapdelgwad44.github.io/omar-portfolio/en/`
 
 Update `site` and `base` in `astro.config.mjs`:
 
