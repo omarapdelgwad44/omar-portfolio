@@ -7,8 +7,8 @@ export const ui = {
       ar: 'عمر أحمد سيد — مطوّر Backend',
     },
     description: {
-      en: 'Back-End Developer specializing in Laravel, Livewire, and scalable web applications. Portfolio showcasing professional and personal projects.',
-      ar: 'مطوّر Backend متخصص في Laravel و Livewire وتطبيقات ويب قابلة للتوسع. برتفوليو يعرض المشاريع المهنية والشخصية.',
+      en: 'Back-End Developer specializing in Laravel, Livewire, and scalable web applications. Portfolio showcasing professional projects.',
+      ar: 'مطوّر Backend متخصص في Laravel و Livewire وتطبيقات ويب قابلة للتوسع. برتفوليو يعرض المشاريع المهنية.',
     },
   },
   nav: {
@@ -32,12 +32,14 @@ export const ui = {
     experience: { en: 'Experience', ar: 'الخبرة' },
     featured: { en: 'Featured Work', ar: 'أبرز الأعمال' },
     archive: { en: 'More Projects', ar: 'مشاريع أخرى' },
-    personal: { en: 'Personal Projects', ar: 'مشاريع شخصية' },
     skills: { en: 'Tech Stack', ar: 'التقنيات' },
     contact: { en: 'Contact', ar: 'التواصل' },
   },
   project: {
     viewCase: { en: 'View Details', ar: 'التفاصيل' },
+    liveSite: { en: 'Visit Live Site', ar: 'زيارة الموقع' },
+    watchDemo: { en: 'Watch Demo', ar: 'شاهد العرض' },
+    hostedOn: { en: 'Hosted on', ar: 'مستضاف على' },
     contributions: { en: 'Key Contributions', ar: 'أبرز المساهمات' },
     stack: { en: 'Tech Stack', ar: 'التقنيات' },
     overview: { en: 'Overview', ar: 'نظرة عامة' },
@@ -51,7 +53,6 @@ export const ui = {
       all: { en: 'All', ar: 'الكل' },
       featured: { en: 'Featured', ar: 'مميز' },
       archive: { en: 'Archive', ar: 'أرشيف' },
-      personal: { en: 'Personal', ar: 'شخصي' },
     },
   },
   about: {

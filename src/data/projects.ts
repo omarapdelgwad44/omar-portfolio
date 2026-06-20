@@ -2,45 +2,6 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
-    slug: 'shabekny',
-    category: 'featured',
-    status: 'live',
-    company: { en: 'Data-Link', ar: 'Data-Link' },
-    period: '2025 – 2026',
-    title: { en: 'Shabekny', ar: 'شبكني' },
-    tagline: {
-      en: 'Architected classified ads backend with payments and real-time chat',
-      ar: 'تصميم backend لمنصة إعلانات مبوبة مع دفع ومحادثة فورية',
-    },
-    overview: {
-      en: 'Classified ads and marketplace platform backend serving mobile and web clients with role-based workflows for advertisers, marketers, and vendors.',
-      ar: 'Backend لمنصة إعلانات مبوبة و marketplace يخدم تطبيقات mobile و web مع workflows حسب الأدوار للمعلنين والمسوقين والبائعين.',
-    },
-    contributions: [
-      {
-        en: 'Architected backend for classified ads platform: categories, products, ads, cart, and order management',
-        ar: 'تصميم backend للمنصة: فئات، منتجات، إعلانات، سلة، وإدارة طلبات',
-      },
-      {
-        en: 'Implemented advertiser and marketer role-based workflows with permission layer',
-        ar: 'تنفيذ workflows للمعلنين والمسوقين مع طبقة صلاحيات',
-      },
-      {
-        en: 'Integrated SadadPay payment gateway for checkout flows',
-        ar: 'تكامل بوابة SadadPay لعمليات الدفع',
-      },
-      {
-        en: 'Built real-time chat module with Livewire',
-        ar: 'بناء وحدة محادثة فورية بـ Livewire',
-      },
-      {
-        en: 'Integrated frontend designs into Livewire component architecture',
-        ar: 'دمج التصميمات في بنية مكونات Livewire',
-      },
-    ],
-    stack: ['Laravel 12', 'Livewire 3', 'Sanctum', 'SadadPay', 'Spatie Permission', 'MySQL'],
-  },
-  {
     slug: 'bastta',
     category: 'featured',
     status: 'live',
@@ -143,7 +104,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'falwshal',
-    category: 'featured',
+    category: 'archive',
     status: 'in-progress',
     company: { en: 'Refineder', ar: 'Refineder' },
     period: '2026',
@@ -208,76 +169,6 @@ export const projects: Project[] = [
     stack: ['Laravel 12', 'Livewire 4', 'Refinder SDK', 'Tailwind 4', 'MySQL'],
   },
   {
-    slug: 'multivendor',
-    category: 'archive',
-    status: 'live',
-    company: { en: 'Data-Link', ar: 'Data-Link' },
-    period: '2025 – 2026',
-    title: { en: 'Multivendor Platform', ar: 'منصة Multivendor' },
-    tagline: {
-      en: 'Drove multivendor backend features — APIs, notifications, and reporting',
-      ar: 'قيادة ميزات backend لمنصة multivendor — APIs وإشعارات وتقارير',
-    },
-    overview: {
-      en: 'Multivendor e-commerce platform with admin and vendor dashboards, mobile API, subscriptions, and shipment webhooks.',
-      ar: 'منصة e-commerce multivendor مع لوحات admin و vendor و API mobile واشتراكات.',
-    },
-    contributions: [
-      {
-        en: 'Drove backend feature development across vendor catalog, product approval workflows, and subscription gating',
-        ar: 'قيادة تطوير ميزات: كتالوج vendor وموافقة منتجات وتقييد اشتراك',
-      },
-      {
-        en: 'Implemented cart, order, and return REST API layer with unified response structure',
-        ar: 'تنفيذ REST API للسلة والطلبات والمرتجعات',
-      },
-      {
-        en: 'Built multi-channel notification infrastructure (FCM, templates, campaigns, queue jobs)',
-        ar: 'بناء بنية إشعارات متعددة القنوات',
-      },
-      {
-        en: 'Delivered admin and vendor analytics reporting with Excel export',
-        ar: 'تسليم تقارير analytics مع تصدير Excel',
-      },
-    ],
-    stack: ['Laravel 12', 'Livewire 3', 'Firebase', 'Sanctum', 'ZegoCloud'],
-  },
-  {
-    slug: 'vestido',
-    category: 'archive',
-    status: 'live',
-    company: { en: 'Data-Link', ar: 'Data-Link' },
-    period: '2025',
-    title: { en: 'Vestido', ar: 'Vestido' },
-    tagline: {
-      en: 'Delivered reporting, wallet, and checkout modules on a fashion marketplace',
-      ar: 'تسليم تقارير وwallet وcheckout على marketplace أزياء',
-    },
-    overview: {
-      en: 'Multivendor fashion e-commerce platform with vendor wallets, subscriptions, and multi-type product management.',
-      ar: 'منصة multivendor للأزياء مع محافظ بائعين واشتراكات ومنتجات متعددة الأنواع.',
-    },
-    contributions: [
-      {
-        en: 'Delivered admin and vendor analytics reporting modules with dedicated dashboards',
-        ar: 'تسليم وحدات تقارير analytics للـ admin و vendor',
-      },
-      {
-        en: 'Implemented vendor wallet top-up flow with payment controller integration',
-        ar: 'تنفيذ شحن محفظة البائع مع payment controller',
-      },
-      {
-        en: 'Enhanced vendor subscription and home dashboard experiences',
-        ar: 'تحسين اشتراك البائع ولوحة home',
-      },
-      {
-        en: 'Extended checkout with commission and delivery fee calculation logic',
-        ar: 'توسيع checkout بحساب عمولة ورسوم توصيل',
-      },
-    ],
-    stack: ['Laravel 12', 'Livewire 3', 'Firebase', 'DomPDF', 'MySQL'],
-  },
-  {
     slug: 'hudhud-bakery',
     category: 'archive',
     status: 'live',
@@ -335,85 +226,6 @@ export const projects: Project[] = [
     ],
     stack: ['Laravel 12', 'Livewire 3', 'Tailwind 4'],
   },
-  {
-    slug: 'nyx-ecommerce',
-    category: 'personal',
-    status: 'in-development',
-    title: { en: 'NYX E-Commerce', ar: 'NYX E-Commerce' },
-    tagline: {
-      en: 'Personal e-commerce platform with admin catalog management',
-      ar: 'منصة e-commerce شخصية مع إدارة كتالوج',
-    },
-    overview: {
-      en: 'Personal e-commerce project with admin dashboard for catalog management and storefront foundation.',
-      ar: 'مشروع e-commerce شخصي مع لوحة تحكم لإدارة الكتالوج وأساس storefront.',
-    },
-    contributions: [
-      {
-        en: 'Designed and developed e-commerce platform with admin dashboard for categories, brands, products, coupons, and sliders',
-        ar: 'تصميم وتطوير منصة مع لوحة تحكم للفئات والبرands والمنتجات والكوبونات',
-      },
-      {
-        en: 'Implemented role-based access control with Spatie Permission',
-        ar: 'تنفيذ صلاحيات حسب الدور بـ Spatie Permission',
-      },
-    ],
-    stack: ['Laravel 12', 'Livewire 3', 'Spatie Permission', 'Tailwind 4'],
-  },
-  {
-    slug: 'fabric-merchant',
-    category: 'personal',
-    status: 'live',
-    title: { en: 'Fabric Merchant', ar: 'Fabric Merchant' },
-    tagline: {
-      en: 'Fabric inventory and order management system',
-      ar: 'نظام إدارة مخزون أقمشة وطلبات',
-    },
-    overview: {
-      en: 'Bilingual fabric merchant management system with inventory, orders, inquiries, and sales analytics.',
-      ar: 'نظام إدارة تاجر أقمشة ثنائي اللغة مع مخزون وطلبات واستفسارات.',
-    },
-    contributions: [
-      {
-        en: 'Designed and developed fabric merchant system with inventory grid and order tracking',
-        ar: 'تصميم وتطوير نظام مع شبكة مخزون وتتبع طلبات',
-      },
-      {
-        en: 'Built customer inquiry management and sales analytics dashboard',
-        ar: 'بناء إدارة استفسارات وتحليلات مبيعات',
-      },
-      {
-        en: 'Delivered bilingual (AR/EN) admin experience with Spatie Media Library',
-        ar: 'تسليم تجربة إدارية ثنائية اللغة مع Spatie Media',
-      },
-    ],
-    stack: ['Laravel 13', 'Livewire 4', 'Spatie Media', 'Tailwind 4'],
-  },
-  {
-    slug: 'mypos',
-    category: 'personal',
-    status: 'live',
-    title: { en: 'MyPOS', ar: 'MyPOS' },
-    tagline: {
-      en: 'Point-of-sale system with stock and order management',
-      ar: 'نظام نقاط بيع مع إدارة مخزون وطلبات',
-    },
-    overview: {
-      en: 'Early-career point-of-sale system with product management, client orders, and stock tracking.',
-      ar: 'نظام POS مبكر مع إدارة منتجات وطلبات عملاء وتتبع مخزون.',
-    },
-    contributions: [
-      {
-        en: 'Designed and developed POS system with product/category and client order management',
-        ar: 'تصميم وتطوير POS مع إدارة منتجات وفئات وطلبات',
-      },
-      {
-        en: 'Implemented stock tracking on order lifecycle with bilingual dashboard',
-        ar: 'تنفيذ تتبع مخزون مع دورة الطلب ولوحة ثنائية اللغة',
-      },
-    ],
-    stack: ['Laravel 5.7', 'Laratrust', 'Laravel Localization', 'Bootstrap'],
-  },
 ];
 
 export function getProject(slug: string): Project | undefined {
@@ -422,4 +234,13 @@ export function getProject(slug: string): Project | undefined {
 
 export function getProjectsByCategory(category: Project['category']): Project[] {
   return projects.filter((p) => p.category === category);
+}
+
+/** Featured Work: Refineder, Bastta, Faisal, Magic Garden */
+const FEATURED_SLUGS = ['refineder-website', 'bastta', 'faisal-art-gallery', 'magic-garden'] as const;
+
+export function getFeaturedProjects(): Project[] {
+  return FEATURED_SLUGS.map((slug) => projects.find((p) => p.slug === slug)).filter(
+    (p): p is Project => p !== undefined,
+  );
 }

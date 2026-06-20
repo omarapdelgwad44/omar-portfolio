@@ -1,0 +1,71 @@
+---
+import { getProjectLogo } from '../data/project-logos';
+
+interface Props {
+  slug: string;
+  title: string;
+  size?: 'card' | 'hero';
+}
+
+const { slug, title, size = 'card' } = Astro.props;
+const logo = getProjectLogo(slug);
+
+if (!logo) return null;
+
+const isHero = size === 'hero';
+const padLight = logo.pad === 'light';
+const isWide = logo.wide;
+---
+
+<div
+  class:list={[
+    'project-logo relative flex shrink-0 items-center justify-center overflow-hidden',
+    isHero
+      ? isWide
+        ? 'h-24 min-w-[11rem] px-4 sm:h-28'
+        : 'h-24 w-24 sm:h-28 sm:w-28'
+      : isWide
+        ? 'h-14 min-w-[7.5rem] px-3'
+        : 'h-14 min-w-[5rem] px-3',
+    padLight
+      ? 'bg-gradient-to-br from-zinc-100 to-zinc-200 ring-1 ring-white/20'
+      : 'bg-gradient-to-br from-zinc-900 to-zinc-950 ring-1 ring-zinc-700/80',
+    'rounded-2xl shadow-lg shadow-black/20',
+  ]}
+  style={logo.accent ? `--logo-accent: ${logo.accent}` : undefined}
+>
+  <div
+    class="pointer-events-none absolute inset-0 opacity-40"
+    style={`background: radial-gradient(circle at 30% 20%, var(--logo-accent, #10b981) 0%, transparent 65%)`}
+  />
+  <img
+    src={logo.src}
+    alt={title}
+    loading="lazy"
+    class:list={[
+      'relative z-10 object-contain',
+      isHero
+        ? isWide
+          ? 'max-h-[4rem] max-w-[10rem] sm:max-h-[4.75rem] sm:max-w-[11rem]'
+          : 'max-h-[4.5rem] max-w-[4.5rem] sm:max-h-[5.5rem] sm:max-w-[5.5rem]'
+        : isWide
+          ? 'max-h-9 max-w-[7rem]'
+          : 'max-h-9 max-w-[4.75rem]',
+    ]}
+  />
+</div>
+
+<style>
+  .project-logo {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  :global(.group:hover) .project-logo {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 28px rgb(0 0 0 / 0.35),
+      0 0 0 1px color-mix(in srgb, var(--logo-accent, #10b981) 25%, transparent);
+  }
+</style>

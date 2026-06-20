@@ -1,8 +1,10 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro';
+import ProjectLogo from '../../../components/ProjectLogo.astro';
 import { languages, localizedPath } from '../../../i18n/config';
 import { ui, uiLabel } from '../../../i18n/ui';
 import { projects, getProject } from '../../../data/projects';
+import { getProjectLink, linkHostname } from '../../../data/project-links';
 
 export function getStaticPaths() {
   return languages.flatMap((lang) =>
@@ -14,6 +16,7 @@ export function getStaticPaths() {
 
 const { lang, slug } = Astro.params;
 const project = getProject(slug!);
+const projectLink = project ? getProjectLink(project.slug) : undefined;
 
 if (!project) {
   return Astro.redirect(localizedPath(lang as 'en' | 'ar', 'projects'));
@@ -35,23 +38,67 @@ if (!project) {
       {uiLabel(ui.project.back, lang!)}
     </a>
 
-    <div class="mb-6 flex flex-wrap items-center gap-2">
-      {
-        project.status === 'in-progress' && (
-          <span class="badge-warning">{uiLabel(ui.project.status['in-progress'], lang!)}</span>
-        )
-      }
-      {
-        project.status === 'in-development' && (
-          <span class="badge-warning">{uiLabel(ui.project.status['in-development'], lang!)}</span>
-        )
-      }
-      {project.company && <span class="badge-accent">{project.company[lang!]}</span>}
-      {project.period && <span class="badge-muted">{project.period}</span>}
+    <div class="mb-8 flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
+      <ProjectLogo slug={project.slug} title={project.title[lang!]} size="hero" />
+      <div class="min-w-0 flex-1">
+        <div class="mb-4 flex flex-wrap items-center gap-2">
+          {
+            project.status === 'in-progress' && (
+              <span class="badge-warning">{uiLabel(ui.project.status['in-progress'], lang!)}</span>
+            )
+          }
+          {
+            project.status === 'in-development' && (
+              <span class="badge-warning">{uiLabel(ui.project.status['in-development'], lang!)}</span>
+            )
+          }
+          {project.company && <span class="badge-accent">{project.company[lang!]}</span>}
+          {project.period && <span class="badge-muted">{project.period}</span>}
+        </div>
+
+        <h1 class="mb-3 text-3xl font-bold text-white md:text-4xl">{project.title[lang!]}</h1>
+        <p class="text-lg text-emerald-400">{project.tagline[lang!]}</p>
+      </div>
     </div>
 
-    <h1 class="mb-3 text-3xl font-bold text-white md:text-4xl">{project.title[lang!]}</h1>
-    <p class="mb-8 text-lg text-emerald-400">{project.tagline[lang!]}</p>
+    {
+      projectLink && (projectLink.liveUrl || projectLink.videoUrl) && (
+        <div class="mb-10 flex flex-wrap items-center gap-3">
+          {
+            projectLink.liveUrl && (
+              <a
+                href={projectLink.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400"
+              >
+                ↗ {uiLabel(ui.project.liveSite, lang!)}
+              </a>
+            )
+          }
+          {
+            projectLink.videoUrl && (
+              <a
+                href={projectLink.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-zinc-200 transition hover:border-emerald-500/50"
+              >
+                ▶ {uiLabel(ui.project.watchDemo, lang!)}
+              </a>
+            )
+          }
+          {
+            projectLink.liveUrl && (
+              <p class="text-xs text-zinc-500">
+                {uiLabel(ui.project.hostedOn, lang!)}{' '}
+                {projectLink.host ? projectLink.host[lang!] : linkHostname(projectLink.liveUrl)}
+              </p>
+            )
+          }
+        </div>
+      )
+    }
 
     <section class="mb-10">
       <h2 class="mb-3 text-sm font-semibold uppercase tracking-wider text-zinc-500">

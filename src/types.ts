@@ -1,6 +1,6 @@
 export type Lang = 'en' | 'ar';
 
-export type ProjectCategory = 'featured' | 'archive' | 'personal';
+export type ProjectCategory = 'featured' | 'archive';
 
 export type ProjectStatus = 'live' | 'in-progress' | 'in-development';
 
