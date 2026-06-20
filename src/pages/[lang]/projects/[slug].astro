@@ -1,0 +1,94 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { languages, localizedPath } from '../../../i18n/config';
+import { ui, uiLabel } from '../../../i18n/ui';
+import { projects, getProject } from '../../../data/projects';
+
+export function getStaticPaths() {
+  return languages.flatMap((lang) =>
+    projects.map((project) => ({
+      params: { lang, slug: project.slug },
+    })),
+  );
+}
+
+const { lang, slug } = Astro.params;
+const project = getProject(slug!);
+
+if (!project) {
+  return Astro.redirect(localizedPath(lang as 'en' | 'ar', 'projects'));
+}
+---
+
+<SiteLayout
+  lang={lang!}
+  title={project.title[lang!]}
+  description={project.tagline[lang!]}
+  currentPath={`projects/${slug}`}
+>
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-20">
+    <a
+      href={localizedPath(lang!, 'projects')}
+      class="mb-8 inline-flex items-center gap-1 text-sm text-zinc-400 transition hover:text-emerald-400"
+    >
+      <span class={lang === 'ar' ? '' : 'rotate-180'} aria-hidden="true">→</span>
+      {uiLabel(ui.project.back, lang!)}
+    </a>
+
+    <div class="mb-6 flex flex-wrap items-center gap-2">
+      {
+        project.status === 'in-progress' && (
+          <span class="badge-warning">{uiLabel(ui.project.status['in-progress'], lang!)}</span>
+        )
+      }
+      {
+        project.status === 'in-development' && (
+          <span class="badge-warning">{uiLabel(ui.project.status['in-development'], lang!)}</span>
+        )
+      }
+      {project.company && <span class="badge-accent">{project.company[lang!]}</span>}
+      {project.period && <span class="badge-muted">{project.period}</span>}
+    </div>
+
+    <h1 class="mb-3 text-3xl font-bold text-white md:text-4xl">{project.title[lang!]}</h1>
+    <p class="mb-8 text-lg text-emerald-400">{project.tagline[lang!]}</p>
+
+    <section class="mb-10">
+      <h2 class="mb-3 text-sm font-semibold uppercase tracking-wider text-zinc-500">
+        {uiLabel(ui.project.overview, lang!)}
+      </h2>
+      <p class="prose-portfolio">{project.overview[lang!]}</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500">
+        {uiLabel(ui.project.contributions, lang!)}
+      </h2>
+      <ul class="prose-portfolio space-y-3">
+        {
+          project.contributions.map((item) => (
+            <li class="flex gap-3 text-zinc-300">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+              {item[lang!]}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500">
+        {uiLabel(ui.project.stack, lang!)}
+      </h2>
+      <div class="flex flex-wrap gap-2">
+        {
+          project.stack.map((tech) => (
+            <span class="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-300">
+              {tech}
+            </span>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</SiteLayout>

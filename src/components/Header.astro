@@ -1,0 +1,80 @@
+---
+import type { Lang } from '../types';
+import { localizedPath } from '../i18n/config';
+import { ui, uiLabel } from '../i18n/ui';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  lang: Lang;
+  currentPath?: string;
+}
+
+const { lang, currentPath = '' } = Astro.props;
+
+const links = [
+  { href: '', label: ui.nav.home },
+  { href: 'about', label: ui.nav.about },
+  { href: 'projects', label: ui.nav.projects },
+  { href: 'contact', label: ui.nav.contact },
+];
+
+function isActive(href: string): boolean {
+  if (!href) return currentPath === '' || currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+    <a
+      href={localizedPath(lang)}
+      class="text-lg font-bold tracking-tight text-white transition hover:text-emerald-400"
+    >
+      O<span class="text-emerald-400">.</span>AS
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Main">
+      {
+        links.map(({ href, label }) => (
+          <a
+            href={localizedPath(lang, href)}
+            class:list={[
+              'rounded-lg px-3 py-2 text-sm font-medium transition',
+              isActive(href)
+                ? 'bg-emerald-500/10 text-emerald-400'
+                : 'text-zinc-400 hover:bg-zinc-800/50 hover:text-white',
+            ]}
+          >
+            {uiLabel(label, lang)}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <LanguageSwitcher lang={lang} currentPath={currentPath} />
+      <a
+        href={localizedPath(lang, 'contact')}
+        class="hidden rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400 sm:inline-block"
+      >
+        {uiLabel(ui.nav.contact, lang)}
+      </a>
+    </div>
+  </div>
+
+  <nav class="flex gap-1 overflow-x-auto border-t border-zinc-800/40 px-4 py-2 md:hidden" aria-label="Mobile">
+    {
+      links.map(({ href, label }) => (
+        <a
+          href={localizedPath(lang, href)}
+          class:list={[
+            'shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium',
+            isActive(href) ? 'bg-emerald-500/10 text-emerald-400' : 'text-zinc-400',
+          ]}
+        >
+          {uiLabel(label, lang)}
+        </a>
+      ))
+    }
+  </nav>
+</header>

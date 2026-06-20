@@ -1,0 +1,43 @@
+---
+import type { Lang } from '../types';
+import { ui, uiLabel } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t border-zinc-800/60 bg-zinc-950">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 sm:flex-row sm:px-6">
+    <p class="text-sm text-zinc-500">
+      © {year} Omar Ahmed Sayed. {uiLabel(ui.footer.rights, lang)}
+    </p>
+    <div class="flex items-center gap-4 text-sm">
+      <a
+        href="mailto:omarapdelgwad44@gmail.com"
+        class="text-zinc-400 transition hover:text-emerald-400"
+      >
+        Email
+      </a>
+      <a
+        href="https://linkedin.com/in/omar-apd-elgwad-66330027a"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-zinc-400 transition hover:text-emerald-400"
+      >
+        LinkedIn
+      </a>
+      <a
+        href="https://github.com/omarapdelgwad44"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-zinc-400 transition hover:text-emerald-400"
+      >
+        GitHub
+      </a>
+    </div>
+  </div>
+</footer>

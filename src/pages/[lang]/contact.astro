@@ -1,0 +1,82 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { languages } from '../../i18n/config';
+import { ui, uiLabel } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const cvPath = `${import.meta.env.BASE_URL}cv/Omar_Ahmed_Sayed.pdf`.replace(/\/{2,}/g, '/');
+---
+
+<SiteLayout lang={lang!} title={uiLabel(ui.contact.title, lang!)} currentPath="contact">
+  <section class="mx-auto max-w-2xl px-4 py-16 sm:px-6 md:py-24">
+    <h1 class="section-title mb-4">{uiLabel(ui.contact.title, lang!)}</h1>
+    <p class="mb-12 text-zinc-400">{uiLabel(ui.contact.subtitle, lang!)}</p>
+
+    <div class="space-y-4">
+      <a
+        href="mailto:omarapdelgwad44@gmail.com"
+        class="card flex items-center gap-4 p-5 transition hover:border-emerald-500/40"
+      >
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+          ✉
+        </div>
+        <div>
+          <p class="text-sm text-zinc-500">{uiLabel(ui.contact.email, lang!)}</p>
+          <p class="font-medium text-white">omarapdelgwad44@gmail.com</p>
+        </div>
+      </a>
+
+      <a
+        href="https://linkedin.com/in/omar-apd-elgwad-66330027a"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="card flex items-center gap-4 p-5 transition hover:border-emerald-500/40"
+      >
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+          in
+        </div>
+        <div>
+          <p class="text-sm text-zinc-500">{uiLabel(ui.contact.linkedin, lang!)}</p>
+          <p class="font-medium text-white">linkedin.com/in/omar-apd-elgwad-66330027a</p>
+        </div>
+      </a>
+
+      <a
+        href="https://github.com/omarapdelgwad44"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="card flex items-center gap-4 p-5 transition hover:border-emerald-500/40"
+      >
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+          GH
+        </div>
+        <div>
+          <p class="text-sm text-zinc-500">{uiLabel(ui.contact.github, lang!)}</p>
+          <p class="font-medium text-white">github.com/omarapdelgwad44</p>
+        </div>
+      </a>
+
+      <a
+        href={cvPath}
+        download
+        class="card flex items-center gap-4 p-5 transition hover:border-emerald-500/40"
+      >
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+          CV
+        </div>
+        <div>
+          <p class="text-sm text-zinc-500">{uiLabel(ui.hero.ctaCv, lang!)}</p>
+          <p class="font-medium text-white">Omar_Ahmed_Sayed.pdf</p>
+        </div>
+      </a>
+    </div>
+
+    <p class="mt-8 text-center text-sm text-zinc-500">
+      {lang === 'ar' ? 'الهاتف: 01004517035' : 'Phone: +20 100 451 7035'}
+    </p>
+  </section>
+</SiteLayout>

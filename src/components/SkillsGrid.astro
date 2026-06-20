@@ -1,0 +1,37 @@
+---
+import type { Lang } from '../types';
+import { skills, skillCategories } from '../data/skills';
+import { ui, uiLabel } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const grouped = skills.reduce<Record<string, typeof skills>>((acc, skill) => {
+  if (!acc[skill.category]) acc[skill.category] = [];
+  acc[skill.category].push(skill);
+  return acc;
+}, {});
+---
+
+<section>
+  <h2 class="section-title mb-8">{uiLabel(ui.sections.skills, lang)}</h2>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      Object.entries(grouped).map(([category, items]) => (
+        <div class="card p-5">
+          <h3 class="mb-3 text-sm font-semibold uppercase tracking-wider text-emerald-400">
+            {skillCategories[category]?.[lang] ?? category}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {items.map((skill) => (
+              <span class="rounded-lg bg-zinc-800/80 px-3 py-1 text-sm text-zinc-300">{skill.name}</span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+import type { Lang } from '../types';
+import { localizedPath } from '../i18n/config';
+import { ui, uiLabel } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const cvPath = `${import.meta.env.BASE_URL}cv/Omar_Ahmed_Sayed.pdf`.replace(/\/{2,}/g, '/');
+---
+
+<section class="relative overflow-hidden py-20 md:py-28">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
+
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-emerald-400">
+      {uiLabel(ui.hero.greeting, lang)}
+    </p>
+    <h1 class="mb-4 text-4xl font-bold tracking-tight text-white md:text-6xl lg:text-7xl">
+      {uiLabel(ui.hero.name, lang)}
+    </h1>
+    <p class="mb-8 max-w-2xl text-lg leading-relaxed text-zinc-400 md:text-xl">
+      {uiLabel(ui.hero.tagline, lang)}
+    </p>
+
+    <div class="flex flex-wrap gap-3">
+      <a
+        href={localizedPath(lang, 'projects')}
+        class="rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-400"
+      >
+        {uiLabel(ui.hero.ctaProjects, lang)}
+      </a>
+      <a
+        href={localizedPath(lang, 'contact')}
+        class="rounded-xl border border-zinc-700 px-6 py-3 text-sm font-semibold text-white transition hover:border-emerald-500/50 hover:bg-zinc-900"
+      >
+        {uiLabel(ui.hero.ctaContact, lang)}
+      </a>
+      <a
+        href={cvPath}
+        download
+        class="rounded-xl border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-300 transition hover:border-zinc-600 hover:text-white"
+      >
+        {uiLabel(ui.hero.ctaCv, lang)}
+      </a>
+    </div>
+  </div>
+</section>

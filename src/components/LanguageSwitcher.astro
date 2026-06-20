@@ -1,0 +1,33 @@
+---
+import type { Lang } from '../types';
+import { localizedPath, languages } from '../i18n/config';
+
+interface Props {
+  lang: Lang;
+  currentPath?: string;
+}
+
+const { lang, currentPath = '' } = Astro.props;
+
+function switchPath(targetLang: Lang): string {
+  const clean = currentPath.replace(/^\//, '');
+  return localizedPath(targetLang, clean);
+}
+---
+
+<div class="flex items-center rounded-lg border border-zinc-700/60 bg-zinc-900/80 p-0.5 text-xs font-semibold">
+  {
+    languages.map((l) => (
+      <a
+        href={switchPath(l)}
+        class:list={[
+          'rounded-md px-2.5 py-1 transition',
+          l === lang ? 'bg-emerald-500 text-zinc-950' : 'text-zinc-400 hover:text-white',
+        ]}
+        hreflang={l}
+      >
+        {l.toUpperCase()}
+      </a>
+    ))
+  }
+</div>
