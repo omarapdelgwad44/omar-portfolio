@@ -3,6 +3,7 @@ import type { Lang } from '../types';
 import { localizedPath } from '../i18n/config';
 import { ui, uiLabel } from '../i18n/ui';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import ProfilePhoto from './ProfilePhoto.astro';
 
 interface Props {
   lang: Lang;
@@ -28,9 +29,12 @@ function isActive(href: string): boolean {
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
     <a
       href={localizedPath(lang)}
-      class="text-lg font-bold tracking-tight text-white transition hover:text-emerald-400"
+      class="flex items-center gap-2.5 text-lg font-bold tracking-tight text-white transition hover:text-emerald-400"
     >
-      O<span class="text-emerald-400">.</span>AS
+      <ProfilePhoto size="sm" />
+      <span class="hidden sm:inline">
+        O<span class="text-emerald-400">.</span>AS
+      </span>
     </a>
 
     <nav class="hidden items-center gap-1 md:flex" aria-label="Main">

@@ -1,0 +1,41 @@
+---
+interface Props {
+  size?: 'hero' | 'about' | 'sm';
+  class?: string;
+}
+
+const { size = 'hero', class: className = '' } = Astro.props;
+const profilePath = `${import.meta.env.BASE_URL}images/omar-profile.jpg`.replace(/\/{2,}/g, '/');
+
+const sizeClasses = {
+  hero: 'profile-frame-hero max-h-[min(520px,70vh)] w-full max-w-sm',
+  about: 'profile-frame-about h-72 w-56 sm:h-80 sm:w-64',
+  sm: 'h-9 w-9 rounded-full ring-2 ring-emerald-500/40',
+};
+---
+
+<div class:list={['profile-photo-wrap', sizeClasses[size], className]}>
+  {
+    size === 'sm' ? (
+      <img
+        src={profilePath}
+        alt="Omar Ahmed Sayed"
+        class="h-full w-full rounded-full object-cover object-top"
+        loading="eager"
+        width="36"
+        height="36"
+      />
+    ) : (
+      <div class="profile-frame-inner h-full w-full overflow-hidden">
+        <img
+          src={profilePath}
+          alt="Omar Ahmed Sayed"
+          class="h-full w-full object-cover object-top"
+          loading="eager"
+          width="400"
+          height="520"
+        />
+      </div>
+    )
+  }
+</div>

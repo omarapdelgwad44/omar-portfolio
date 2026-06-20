@@ -67,3 +67,37 @@ html[dir="rtl"] body {
 .prose-portfolio p {
   @apply leading-relaxed text-zinc-300;
 }
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(39 39 42 / 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(39 39 42 / 0.35) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+}
+
+.profile-frame-hero .profile-frame-inner,
+.profile-frame-about .profile-frame-inner {
+  @apply rounded-2xl border border-zinc-700/80 bg-zinc-900 shadow-2xl shadow-black/40;
+  box-shadow:
+    0 0 0 1px rgb(16 185 129 / 0.15),
+    0 25px 50px -12px rgb(0 0 0 / 0.5);
+}
+
+.profile-frame-hero .profile-frame-inner {
+  @apply aspect-[3/4] max-h-[min(520px,70vh)];
+}
+
+.profile-frame-about .profile-frame-inner {
+  @apply h-full w-full;
+}
+
+.profile-photo-wrap::before {
+  content: '';
+  @apply pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br from-emerald-500/30 via-transparent to-teal-500/20 opacity-80;
+  z-index: -1;
+}
+
+.profile-photo-wrap {
+  @apply relative;
+}
