@@ -1,11 +1,13 @@
 ---
+import { assetPath } from '../utils/paths';
+
 interface Props {
   size?: 'hero' | 'about' | 'sm';
   class?: string;
 }
 
 const { size = 'hero', class: className = '' } = Astro.props;
-const profilePath = `${import.meta.env.BASE_URL}images/omar-profile.jpg`.replace(/\/{2,}/g, '/');
+const profilePath = assetPath('images/omar-profile.jpg');
 
 const sizeClasses = {
   hero: 'profile-frame-hero max-h-[min(520px,70vh)] w-full max-w-sm',

@@ -1,5 +1,6 @@
 ---
 import { defaultLang } from '../i18n/config';
+import { assetPath } from '../utils/paths';
 
-return Astro.redirect(`${import.meta.env.BASE_URL}${defaultLang}/`.replace(/\/{2,}/g, '/'));
+return Astro.redirect(assetPath(`${defaultLang}/`));
 ---

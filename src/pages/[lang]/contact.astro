@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
+import { assetPath } from '../../utils/paths';
 import { languages } from '../../i18n/config';
 import { ui, uiLabel } from '../../i18n/ui';
 
@@ -8,7 +9,7 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const cvPath = `${import.meta.env.BASE_URL}cv/Omar_Ahmed_Sayed.pdf`.replace(/\/{2,}/g, '/');
+const cvPath = assetPath('cv/Omar_Ahmed_Sayed.pdf');
 ---
 
 <SiteLayout lang={lang!} title={uiLabel(ui.contact.title, lang!)} currentPath="contact">

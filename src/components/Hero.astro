@@ -8,8 +8,14 @@ interface Props {
   lang: Lang;
 }
 
+import { assetPath } from '../utils/paths';
+
+interface Props {
+  lang: Lang;
+}
+
 const { lang } = Astro.props;
-const cvPath = `${import.meta.env.BASE_URL}cv/Omar_Ahmed_Sayed.pdf`.replace(/\/{2,}/g, '/');
+const cvPath = assetPath('cv/Omar_Ahmed_Sayed.pdf');
 
 const highlights =
   lang === 'ar'
